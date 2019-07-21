@@ -1,0 +1,77 @@
+package pages;
+
+import static org.testng.Assert.assertEquals;
+
+import java.util.List;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.Select;
+
+public class ContactFormPage {
+
+	WebDriver driver;
+			
+	public ContactFormPage(WebDriver driver) 
+		{
+			this.driver=driver; 
+		}
+		
+	    
+		public void submitForm()
+		{
+		}
+		
+        public void iamLookingInto()
+        {
+        	WebElement reachoutfor = driver.findElement(By.id("reachoutforproduct"));
+        	Select lookfor=new Select(reachoutfor);
+        	List<WebElement> dropdown=lookfor.getOptions();
+        	 int size=dropdown.size();
+        	 System.out.println("I am looking to…field is a dropdown with "+(size-1)+" choices");
+        	 System.out.println("dropdown values are :");
+        	 for(int i=1;i<size;i++){
+        	 String drop_down_values=dropdown.get(i).getText();
+        	 System.out.println(drop_down_values);
+        	 }
+        	         	 
+        }
+        public void selectSubProduct()
+        {
+        	WebElement product = driver.findElement(By.id("need"));
+        	Select sel_prod=new Select(product);
+        	String prod_value=sel_prod.getFirstSelectedOption().getText();
+        	System.out.println(prod_value);
+            assertEquals(prod_value,"-- Select Product--");
+            
+            WebElement sub_prod = driver.findElement(By.id("product"));
+            Select sel_sub=new Select(sub_prod);	
+            String sub_prod_value=sel_sub.getFirstSelectedOption().getText();
+            assertEquals(sub_prod_value,"-- Select Sub Product --");
+            System.out.println("Sub Product list is empty");
+       
+        	        	        	
+        }
+        public void selectLoanFromProduct()
+        {
+        	WebElement product = driver.findElement(By.id("need"));
+        	Select sel_prod=new Select(product);
+        	sel_prod.selectByVisibleText("Loans");
+        	assertEquals("Loans", sel_prod.getFirstSelectedOption().getText());
+        	
+        	WebElement sub_prod = driver.findElement(By.id("product"));
+            Select sel_sub=new Select(sub_prod);
+            List<WebElement> dropdown=sel_sub.getOptions();
+            int size=dropdown.size();
+            
+        }
+        public void mobileNumberValidation()
+        {
+        	
+        }
+
+        
+	}
+
+

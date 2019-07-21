@@ -1,0 +1,25 @@
+package pages;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.testng.Assert;
+
+public class HomePage {
+
+	 WebDriver driver;
+
+	 public void HomePageValidation()
+	 {
+		 WebElement corporate=driver.findElement(By.linkText("Corporate"));
+		 boolean search_corporate=corporate.isDisplayed();
+		 if (search_corporate==true)
+		 {
+		 String actualTitle =corporate.getText();
+		 String expectedTitle ="Best Consumer Digital Bank UAE | Personal Banking | Mashreq Bank";
+		 Assert.assertEquals(actualTitle,expectedTitle);
+		 System.out.println("Linktext found :");
+	 }
+		
+	 }
+}

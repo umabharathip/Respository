@@ -1,0 +1,22 @@
+package test;
+
+public class MashreqTest {
+
+	
+		// TODO Auto-generated constructor stub
+		
+		protected webDriver driver;
+		public void init(final String url) { 
+		    System.setProperty
+		    ("webdriver.chrome.driver","C:\\chromedriver.exe"); 
+		    driver = new ChromeDriver();
+		    driver.getUrl();
+		 }
+		@AfterSuite
+		public void tearDown() {
+		    driver.close();
+		 }
+		
+	}
+
+}

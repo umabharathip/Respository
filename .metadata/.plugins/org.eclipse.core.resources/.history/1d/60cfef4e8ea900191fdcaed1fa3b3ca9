@@ -1,0 +1,53 @@
+package pages;
+
+import java.util.List;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.Select;
+
+public class ContactFormPage {
+
+	WebDriver driver;
+	public ContactFormPage(WebDriver driver) 
+		{
+			this.driver=driver; 
+		}
+		
+		public void submitForm()
+		{
+		}
+		
+        public void iamLookingInto()
+        {
+        	WebElement reachoutfor = driver.findElement(By.id("reachoutforproduct"));
+        	Select lookfor=new Select(reachoutfor);
+        	List<WebElement> dropdown=lookfor.getOptions();
+        	 int size=dropdown.size();
+        	 for(int i=0;i<size;i++){
+        	 
+        	 String drop_down_values=dropdown.get(i).getText();
+        	 System.out.println("I am looking to…field is a dropdown with"+size+"choices");
+        	 System.out.println("dropdown values are "+drop_down_values);
+        	 }
+        	 
+        	 
+        }
+        public void selectSubProduct()
+        {
+        	
+        }
+        public void selectLoanFromProduct()
+        {
+        	
+        }
+        public void mobileNumberValidation()
+        {
+        	
+        }
+
+        
+	}
+
+

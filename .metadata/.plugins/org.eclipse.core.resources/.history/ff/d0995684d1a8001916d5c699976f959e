@@ -1,0 +1,9 @@
+package com.mavenjava;
+
+public class Mashreq {
+
+	public Mashreq() {
+		// TODO Auto-generated constructor stub
+	}
+
+}

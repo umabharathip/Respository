@@ -1,0 +1,38 @@
+package test;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.AfterSuite;
+
+public class MashreqTest {
+
+	WebDriver driver ;
+		
+		public void init(final String url)
+		{ 
+			System.setProperty("webdriver.chrome.driver","E:\\uma selenium\\chromedriver_win32.exe	");
+		    driver = new ChromeDriver();
+		    driver.get(url);
+		 }
+		@AfterSuite	
+		public void tearDown() 
+		{
+		    driver.close();
+		 }
+		public class LoginTestCase extends MashreqTest{
+			@BeforeSuite
+			public void setUp() {
+			 init("http://facebook.com/");
+			}
+			@Test
+			public void testLogin() { 
+			    LoginAction loginAction = new LoginAction(driver);
+			    loginAction.login("testuser","testpassword");
+			    final String actualTitle = driver.getTitle();
+			    final String expectedTitle ="facebook home page";
+			    Assert.assertEquals(actualTitle,expectedTitle);
+			 }
+			}
+	}
+
+

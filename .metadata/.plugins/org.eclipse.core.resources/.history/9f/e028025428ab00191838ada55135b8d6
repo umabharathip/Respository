@@ -1,0 +1,285 @@
+package pages;
+
+import static org.testng.Assert.assertEquals;
+
+import java.util.List;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.Select;
+import org.testng.Assert;
+
+public class ContactFormPage {
+
+	WebDriver driver;
+			
+	public ContactFormPage(WebDriver driver) 
+		{
+			this.driver=driver; 
+		} 
+			    
+		public void submitForm()
+		{
+			//When no option selected from look for drop down
+			WebElement reachoutfor = driver.findElement(By.id("reachoutforproduct"));
+        	Select lookfor=new Select(reachoutfor);
+        	WebElement compInqServ = driver.findElement(By.id("compInqServ"));
+        	Select complaint=new Select(compInqServ);
+        	WebElement need = driver.findElement(By.id("need"));
+        	Select product=new Select(need);
+        	WebElement prod = driver.findElement(By.id("product"));
+        	Select subpro=new Select(prod);
+        	WebElement emirate = driver.findElement(By.id("emirate"));
+        	Select emir=new Select(emirate);
+        	WebElement branch = driver.findElement(By.id("branch"));
+        	Select bran=new Select(branch);
+        	WebElement firstName = driver.findElement(By.id("firstName"));
+        	String first=firstName.getText();
+        	WebElement email = driver.findElement(By.id("email"));
+        	String txt_email=email.getText();
+        	WebElement mob = driver.findElement(By.id("mob1"));
+        	Select mobilecode=new Select(mob);	
+        	WebElement mobile = driver.findElement(By.id("mobile"));
+        	String phone=mobile.getText();
+        	WebElement submit = driver.findElement(By.id("btnSubmit"));
+        	
+        	//To check no error indicated before clicking submit 
+        	WebElement error_lookup = driver.findElement(By.xpath("//*[@id=\"dvMain\"]/div/div/div[1]/div[1]"));
+        	WebElement error_complaint = driver.findElement(By.xpath("//*[@id=\"dvMain\"]/div/div/div[1]/div[2]"));
+        	WebElement error_product = driver.findElement(By.xpath("//*[@id=\"dvMain\"]/div/div/div[2]/div[1]"));
+        	WebElement error_sub = driver.findElement(By.xpath("//*[@id=\"dvMain\"]/div/div/div[2]/div[2]"));
+        	WebElement error_emirate = driver.findElement(By.xpath("//*[@id=\"dvMain\"]/div/div/div[3]/div[1]"));
+        	WebElement error_branch = driver.findElement(By.xpath("//*[@id=\"dvMain\"]/div/div/div[3]/div[2]"));
+        	WebElement error_first = driver.findElement(By.xpath("//*[@id=\"dvMain\"]/div/div/div[5]/div[1]"));
+        	WebElement error_email = driver.findElement(By.xpath("//*[@id=\"dvMain\"]/div/div/div[6]/div"));
+        	WebElement error_code = driver.findElement(By.xpath("//*[@id=\"dvMain\"]/div/div/div[7]/div"));
+        	WebElement error_mobile = driver.findElement(By.xpath("//*[@id=\"dvMain\"]/div/div/div[7]/div"));
+        	        	
+        	
+        	String text_lookup = error_lookup.getAttribute("class");
+        	System.out.println(text_lookup);
+        	Assert.assertTrue(!text_lookup.contains("has-error"), "Error not indicated");
+        	
+        	String text_comp = error_complaint.getAttribute("class");
+        	System.out.println(text_comp);
+        	Assert.assertTrue(!text_comp.contains("has-error"), "Error not indicated");
+        	
+        	String text_pro = error_product.getAttribute("class");
+        	System.out.println(text_pro);
+        	Assert.assertTrue(!text_pro.contains("has-error"), "Error not indicated");
+        	
+        	String text_sub = error_sub.getAttribute("class");
+        	System.out.println(text_sub);
+        	Assert.assertTrue(!text_sub.contains("has-error"), "Error not indicated");
+        	
+        	String text_emir = error_emirate.getAttribute("class");
+        	System.out.println(text_emir);
+        	Assert.assertTrue(!text_emir.contains("has-error"), "Error not indicated");
+        	
+        	String text_branch = error_branch.getAttribute("class");
+        	System.out.println(text_branch);
+        	Assert.assertTrue(!text_branch.contains("has-error"), "Error not indicated");
+        	
+        	String text_first = error_first.getAttribute("class");
+        	System.out.println(text_first);
+        	Assert.assertTrue(!text_first.contains("has-error"), "Error not indicated");
+        	
+        	String text_email = error_email.getAttribute("class");
+        	System.out.println(text_email);
+        	Assert.assertTrue(!text_email.contains("has-error"), "Error not indicated");
+        	
+        	String text_code = error_code.getAttribute("class");
+        	System.out.println(text_code);
+        	Assert.assertTrue(!text_code.contains("has-error"), "Error not indicated");
+        	
+        	String text_mobile = error_mobile.getAttribute("class");
+        	System.out.println(text_mobile);
+        	Assert.assertTrue(!text_mobile.contains("has-error"), "Error not indicated");
+        	
+        	//Set flag initially true and set false when field is empty
+        	boolean flag=true;
+        	
+        	//To check any details are missing
+        	System.out.println(lookfor.getFirstSelectedOption().getText());
+        	
+        	if (lookfor.getFirstSelectedOption().getText().equals("I am looking to..."))
+        	{
+        		flag=false;
+          	}
+        	else if (complaint.getFirstSelectedOption().getText().equals("Complaint/Inquiry/Service Type"))
+        	{
+        		flag=false;
+        	}
+        	else if(product.getFirstSelectedOption().getText().equals("-- Select Product--"))
+        	{
+        		flag=false;
+        	}
+        	else if(subpro.getFirstSelectedOption().getText().equals("-- Select Sub Product --"))
+        	{
+        		flag=false;
+        	}
+        	else if (emir.getFirstSelectedOption().getText().equals("-- Select Emirate --"))
+        	{
+        		flag=false;
+        	}
+        	else if(bran.getFirstSelectedOption().getText().equals("-- Select Branch --"))
+        	{
+        		flag=false;
+        	}
+        	else if(mobilecode.getFirstSelectedOption().getText().equals(""))
+        	{
+        		flag=false;
+        	}
+        	else if (first=="")
+        	{
+        		flag=false;
+        	}
+        	else if(txt_email=="")
+        	{
+        		flag=false;
+        	}
+        	else if(phone=="")
+        	{
+        		flag=false;
+        	}
+        	
+        	if (flag==false)
+        	{
+        		//Click Submit button
+            	submit.click();
+            	//To check error indicated in class name when submit clicked without selecting value
+            	text_lookup = error_lookup.getAttribute("class");
+            	System.out.println(text_lookup);
+            	Assert.assertTrue(text_lookup.contains("has-error"), "Error not indicated");
+            	
+            	text_comp = error_complaint.getAttribute("class");
+            	System.out.println(text_comp);
+            	Assert.assertTrue(text_comp.contains("has-error"), "Error not indicated");
+            	
+            	text_pro = error_product.getAttribute("class");
+            	System.out.println(text_pro);
+            	Assert.assertTrue(text_pro.contains("has-error"), "Error not indicated");
+            	
+            	text_sub = error_sub.getAttribute("class");
+            	System.out.println(text_sub);
+            	Assert.assertTrue(text_sub.contains("has-error"), "Error not indicated");
+            	
+            	text_emir = error_emirate.getAttribute("class");
+            	System.out.println(text_emir);
+            	Assert.assertTrue(text_emir.contains("has-error"), "Error not indicated");
+            	
+            	text_branch = error_branch.getAttribute("class");
+            	System.out.println(text_branch);
+            	Assert.assertTrue(text_branch.contains("has-error"), "Error not indicated");
+            	
+            	text_first = error_first.getAttribute("class");
+            	System.out.println(text_first);
+            	Assert.assertTrue(text_first.contains("has-error"), "Error not indicated");
+            	
+            	text_code = error_code.getAttribute("class");
+            	System.out.println(text_first);
+            	Assert.assertTrue(text_first.contains("has-error"), "Error not indicated");
+            	
+            	text_mobile = error_mobile.getAttribute("class");
+            	System.out.println(text_first);
+            	Assert.assertTrue(text_first.contains("has-error"), "Error not indicated");
+            	
+            	
+        	}      	  	    	    	
+        	
+        	
+        	}
+		
+        public void iamLookingInto()
+        {
+        	//Get options from lookfor drop down
+        	WebElement reachoutfor = driver.findElement(By.id("reachoutforproduct"));
+        	Select lookfor=new Select(reachoutfor);
+        	List<WebElement> dropdown=lookfor.getOptions();
+        	 int size=dropdown.size();
+        	 System.out.println("I am looking to…field is a dropdown with "+(size-1)+" choices");
+        	 System.out.println("dropdown values are :");
+        	 //To print drop down values
+        	 for(int i=1;i<size;i++){
+        	 String drop_down_values=dropdown.get(i).getText();
+        	 System.out.println(drop_down_values);
+        	 }
+        	         	 
+        	 
+        }
+        public void selectSubProduct()
+        {
+        	//When Product list is empty
+        	WebElement product = driver.findElement(By.id("need"));
+        	Select sel_prod=new Select(product);
+        	String prod_value=sel_prod.getFirstSelectedOption().getText();
+        	System.out.println(prod_value);
+            Assert.assertEquals(prod_value,"-- Select Product--");
+            
+            //To check sub product is empty
+            WebElement sub_prod = driver.findElement(By.id("product"));
+            Select sel_sub=new Select(sub_prod);	
+            String sub_prod_value=sel_sub.getFirstSelectedOption().getText();
+            Assert.assertEquals(sub_prod_value,"-- Select Sub Product --");
+            System.out.println("Sub Product list is empty");
+       
+        	        	        	
+        }
+        public void selectLoanFromProduct()
+        {
+        	//Select Loans from Product drop down
+        	WebElement product = driver.findElement(By.id("need"));
+        	Select sel_prod=new Select(product);
+        	sel_prod.selectByVisibleText("Loans");
+        	Assert.assertEquals(sel_prod.getFirstSelectedOption().getText(),"Loans");
+        	
+        	//Get options from Sub Product drop down
+        	WebElement sub_prod = driver.findElement(By.id("product"));
+            Select sel_sub=new Select(sub_prod);
+            List<WebElement> dropdown=sel_sub.getOptions();
+            
+            //Excluding Select Sub Product from drop down list
+            int  size=dropdown.size()-1;
+            Assert.assertEquals(size,6);
+            
+            //Listing 6 drop down Values in sub product 
+            System.out.println("dropdown values are :");
+       	    for(int i=1;i<=size;i++){
+       	    String drop_down_values=dropdown.get(i).getText();
+       	    System.out.println(drop_down_values);
+       	 }
+        }
+        public void mobileNumberValidation()
+        {
+        	WebElement mobile = driver.findElement(By.id("mobile"));
+        	mobile.sendKeys("1234567");
+        	String typednumber=mobile.getAttribute("value");
+        	int length=typednumber.length();
+        	System.out.println("Length" +length);
+        	if (length!=7)
+        	{
+        		//When mobile number less than 7 digit
+        		WebElement msg=driver.findElement(By.xpath(".//*[@id=\"dvMain\"]/div/div/div[7]/div/div[2]/span"));
+        		String actual = msg.getText();
+        		System.out.println(actual);
+        		String expect = "Mobile number should be 7 digit";
+        		Assert.assertEquals(actual, expect);
+           	}
+        	else
+        	{
+        		//When mobile number is 7 digit
+        		WebElement msg=driver.findElement(By.xpath(".//*[@id=\"dvMain\"]/div/div/div[7]/div/div[2]/span"));
+        		String actual = msg.getText();
+        		System.out.println(actual);
+        		String expect = "";
+        		Assert.assertEquals(actual, expect);
+        		System.out.println("Mobile Number Valid");
+        			
+        	}
+        }
+
+        
+	}
+
+

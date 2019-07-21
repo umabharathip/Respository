@@ -1,0 +1,9 @@
+package pages;
+
+public class ContactFormPage {
+
+	public ContactFormPage() {
+		// TODO Auto-generated constructor stub
+	}
+
+}

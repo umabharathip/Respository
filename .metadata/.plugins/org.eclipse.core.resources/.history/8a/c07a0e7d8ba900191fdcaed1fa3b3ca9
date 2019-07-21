@@ -1,0 +1,33 @@
+package pages;
+
+import org.openqa.selenium.WebDriver;
+
+public class ContactFormPage {
+
+	WebDriver driver;
+	public ContactFormPage(WebDriver driver) 
+		{
+			this.driver=driver; 
+		}
+		
+		public void submitForm()
+		{
+		}
+		
+        public void iamLookingInto()
+        {
+        }
+        public void selectSubProduct()
+        {
+        	
+        }
+        public void selectLoan()
+        {
+        	
+        }
+        
+
+        
+	}
+
+

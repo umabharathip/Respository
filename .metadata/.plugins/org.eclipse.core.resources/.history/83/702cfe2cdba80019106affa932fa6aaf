@@ -1,0 +1,9 @@
+package test;
+
+public class MashreqTest {
+
+	public MashreqTest() {
+		// TODO Auto-generated constructor stub
+	}
+
+}

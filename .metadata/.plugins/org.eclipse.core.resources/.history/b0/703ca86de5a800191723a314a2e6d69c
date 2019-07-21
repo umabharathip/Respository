@@ -1,0 +1,38 @@
+package test;
+
+//import org.junit.Test;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.Assert;
+import org.testng.annotations.AfterSuite;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.Test;
+
+public class MashreqTest {
+
+	public WebDriver driver ;
+	public String url= "https://www.mashreqbank.com/uae/en/personal/home";
+	
+		@AfterTest	
+		public void tearDown() 
+		{
+		    driver.close();
+		 }
+		//public class LoginTestCase extends MashreqTest{
+			@BeforeTest
+			public void setUp() {
+				System.setProperty("webdriver.chrome.driver","E:\\uma selenium\\chromedriver_win32.exe");
+			    driver = new ChromeDriver();
+			    driver.get(url);
+			}
+			@Test
+			public void testLogin() { 
+			    final String actualTitle = driver.getTitle();
+			    final String expectedTitle ="mashreq";
+			    Assert.assertEquals(actualTitle,expectedTitle);
+			 }
+			//}
+	}
+
+

@@ -1,0 +1,23 @@
+package test;
+
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class MashreqTest {
+
+	WebDriver driver ;
+		
+		public void init(final String url)
+		{ 
+		    System.setProperty
+		    ("webdriver.chrome.driver","C:\\chromedriver.exe"); 
+		    driver = new ChromeDriver();
+		    driver.getUrl();
+		 }
+		@AfterSuite
+		public void tearDown() {
+		    driver.close();
+		 }
+		}
+	}
+
+}

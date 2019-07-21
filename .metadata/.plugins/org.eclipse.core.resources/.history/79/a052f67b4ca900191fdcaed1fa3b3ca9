@@ -1,0 +1,26 @@
+package test;
+
+//import org.junit.Test;
+import org.openqa.selenium.WebDriver;
+
+import org.testng.annotations.Test;
+
+import pages.ContactFormPage;
+import pages.HomePage;
+
+public class MashreqTest extends BaseTest{	
+
+	
+			
+	@Test
+	public void testLogin() { 
+	HomePage home_page = new HomePage();
+	home_page.homePageValidation();
+	
+	ContactFormPage contact = new ContactFormPage();
+	
+	 }
+			
+	}
+
+

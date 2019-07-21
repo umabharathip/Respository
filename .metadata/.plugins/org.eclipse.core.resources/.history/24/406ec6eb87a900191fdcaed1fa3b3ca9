@@ -1,0 +1,13 @@
+package pages;
+
+public class ContactFormPage {
+
+	WebDriver driver;
+	public ContactFormPage(WebDriver driver) {
+		{
+			this.driver=driver; 
+		}
+		
+	}
+
+}

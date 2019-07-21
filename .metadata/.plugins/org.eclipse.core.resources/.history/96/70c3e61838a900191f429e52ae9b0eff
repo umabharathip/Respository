@@ -1,0 +1,44 @@
+package test;
+
+//import org.junit.Test;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.Assert;
+import org.testng.annotations.AfterSuite;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Test;
+import pages.HomePage;
+
+public class MashreqTest {
+
+	
+	public WebDriver driver ;
+	public String url= "https://www.mashreqbank.com/uae/en/personal/home";
+	
+	
+	@BeforeTest
+	public void setUp() {
+		System.setProperty("webdriver.chrome.driver","E:\\uma selenium\\chromedriver_win32\\chromedriver.exe");	
+	    driver = new ChromeDriver();
+	    driver.get(url);
+	}
+	@AfterTest	
+	public void tearDown() 
+	{
+	    driver.close();
+    }
+					
+	@Test
+	public void testLogin() { 
+		MashreqTest home_page = new MashreqTest();
+	home_page.HomePageValidation();
+	final String actualTitle = driver.getTitle();
+	final String expectedTitle ="Best Consumer Digital Bank UAE | Personal Banking | Mashreq Bank";
+	Assert.assertEquals(actualTitle,expectedTitle);
+	 }
+			
+	}
+
+

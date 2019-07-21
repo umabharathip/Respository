@@ -1,0 +1,23 @@
+package test;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class MashreqTest {
+
+	WebDriver driver ;
+		
+		public void init(final String url)
+		{ 
+			System.setProperty("webdriver.firefox.marionette","C:\\geckodriver.exe");
+		    driver = new ChromeDriver();
+		    driver.get(url);
+		 }
+		@AfterSuite
+		public void tearDown() {
+		    driver.close();
+		 }
+		}
+	}
+
+}

@@ -1,0 +1,24 @@
+package pages;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+
+public class HomePage {
+
+	 WebDriver driver;
+
+	 public void HomePageValidation()
+	 {
+		 WebElement personal=driver.findElement(By.linkText("Personal"));
+		 boolean search_personal=personal.isDisplayed();
+		 if (search_personal==true)
+		 {
+		 String per =personal.getText();
+		 String actualTitle = driver.getTitle();
+		 String expectedTitle ="Best Consumer Digital Bank UAE | Personal Banking | Mashreq Bank";
+		 System.out.println("Linktext found :");
+	 }
+		
+	 }
+}

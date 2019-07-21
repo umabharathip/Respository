@@ -1,0 +1,33 @@
+package pages;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.testng.Assert;
+
+public class HomePage {
+
+	 WebDriver driver;
+
+	 public void HomePageValidation()
+	 {
+		 WebElement corporate=driver.findElement(By.linkText("Corporate"));
+		 WebElement business=driver.findElement(By.linkText("Business"));
+		 WebElement international=driver.findElement(By.linkText("International"));
+		 WebElement pri_banking=driver.findElement(By.linkText("Private Banking"));
+		 WebElement corporate=driver.findElement(By.linkText("Corporate"));
+		 WebElement corporate=driver.findElement(By.linkText("Corporate"));
+		 WebElement corporate=driver.findElement(By.linkText("Corporate"));
+		 WebElement corporate=driver.findElement(By.linkText("Corporate"));
+		 WebElement corporate=driver.findElement(By.linkText("Corporate"));
+		 boolean search_corporate=corporate.isDisplayed();
+		 if (search_corporate==true)
+		 {
+		 String actualTitle =corporate.getText();
+		 String expectedTitle ="Corporate";
+		 Assert.assertEquals(actualTitle,expectedTitle);
+		 System.out.println("Linktext found :");
+	 }
+		
+	 }
+}

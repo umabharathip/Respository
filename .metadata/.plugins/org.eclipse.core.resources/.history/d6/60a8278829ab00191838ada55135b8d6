@@ -1,0 +1,30 @@
+package test;
+
+//import org.junit.Test;
+import org.testng.annotations.Test;
+
+import pages.ContactFormPage;
+import pages.HomePage;
+
+public class MashreqTest extends BaseTest{	
+
+			
+	@Test
+	public void testmashreq() { 
+	HomePage home_page = new HomePage(driver);
+	//home_page.homePageValidation();
+	//home_page.newsDisplay();
+	home_page.contactUsPage();
+	
+	ContactFormPage contact = new ContactFormPage(driver);
+	//
+	contact.iamLookingInto();
+	contact.selectSubProduct();
+	contact.selectLoanFromProduct();
+	contact.mobileNumberValidation();
+	contact.submitForm();
+	 }
+			
+	}
+
+
